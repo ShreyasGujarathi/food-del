@@ -9,24 +9,17 @@ Welcome to TOMATO, a sophisticated and dynamic food ordering website crafted usi
 
 ## Features
 
--Responsive User Panel for effortless browsing and ordering
-
--Comprehensive Admin Panel for managing products and orders
-
--Secure JWT Authentication & Password Hashing via Bcrypt
-
--Smooth Stripe Payment Integration for hassle-free transactions
-
--User-friendly Login, Signup, and Logout flows
-
--Dynamic Add to Cart and Place Order functionality
-
--Robust Order Management and Product Management tools
-
--Advanced Food Product Filtering for quick searches
-
--Role-based access control with Authenticated REST APIs
-
+- Responsive **User Panel** for effortless browsing and ordering
+  
+- Comprehensive **Admin Panel** for managing products and orders  
+- Secure **JWT Authentication** & **Password Hashing** via Bcrypt  
+- Smooth **Stripe Payment Integration** for hassle-free transactions  
+- User-friendly **Login**, **Signup**, and **Logout** flows  
+- Dynamic **Add to Cart** and **Place Order** functionality  
+- Robust **Order Management** and **Product Management** tools  
+- Advanced **Food Product Filtering** for quick searches  
+- Role-based access control with **Authenticated REST APIs**  
+- Elegant and informative **Alert Notifications**
 -Elegant and informative Alert Notifications
 
 ## Screenshots
