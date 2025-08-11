@@ -1,31 +1,33 @@
 # TOMATO - Food Ordering Website
 
-This repository hosts the source code for TOMATO, a dynamic food ordering website built with the MERN Stack. It offers a user-friendly platform for seamless online food ordering.
+Welcome to TOMATO, a sophisticated and dynamic food ordering website crafted using the MERN stack. Designed with user experience in mind, TOMATO offers a seamless and intuitive online food ordering journey.
 
 ## Demo
 
-- User Panel: [User Panel](https://food-del-frontend-2l5h.onrender.com)
-- Admin Panel: [Admin Panel](https://food-del-admin-0gnt.onrender.com)
+- User Panel: [Access Here](https://food-del-frontend-2l5h.onrender.com)
+- Admin Panel: [Access Here](https://food-del-admin-0gnt.onrender.com)
 
 ## Features
 
-- User Panel
-- Admin Panel
-- JWT Authentication
-- Password Hashing with Bcrypt
-- Stripe Payment Integration
-- Login/Signup
-- Logout
-- Add to Cart
-- Place Order
-- Order Management
-- Products Management
-- Filter Food Products
-- Login/Signup
-- Authenticated APIs
-- REST APIs
-- Role-Based Identification
-- Beautiful Alerts
+-Responsive User Panel for effortless browsing and ordering
+
+-Comprehensive Admin Panel for managing products and orders
+
+-Secure JWT Authentication & Password Hashing via Bcrypt
+
+-Smooth Stripe Payment Integration for hassle-free transactions
+
+-User-friendly Login, Signup, and Logout flows
+
+-Dynamic Add to Cart and Place Order functionality
+
+-Robust Order Management and Product Management tools
+
+-Advanced Food Product Filtering for quick searches
+
+-Role-based access control with Authenticated REST APIs
+
+-Elegant and informative Alert Notifications
 
 ## Screenshots
 
