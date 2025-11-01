@@ -33,6 +33,7 @@ import cors from 'cors'
 import { connectDB } from "./config/db.js"
 import userRouter from "./routes/userRoute.js"
 import foodRouter from "./routes/foodRoute.js"
+import categoryRouter from "./routes/categoryRoute.js"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
 
@@ -51,6 +52,7 @@ connectDB()
 // api endpoints
 app.use("/api/user", userRouter)
 app.use("/api/food", foodRouter)
+app.use("/api/category", categoryRouter)
 app.use("/images",express.static('uploads'))
 app.use("/api/cart", cartRouter)
 app.use("/api/order",orderRouter)

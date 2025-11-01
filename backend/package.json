@@ -5,7 +5,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "populate-food": "node scripts/populateFoodData.js",
+    "migrate-categories": "node scripts/migrateCategories.js"
   },
   "author": "",
   "license": "ISC",
