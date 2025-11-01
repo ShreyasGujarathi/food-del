@@ -1,0 +1,71 @@
+.order-item{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    align-items: start;
+    gap: 25px;
+    border: 2px solid var(--bg-light);
+    padding: 24px;
+    margin: 20px 0px;
+    font-size: 14px;
+    color: var(--text-dark);
+    border-radius: var(--border-radius);
+    background: var(--bg-white);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.order-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+.order-item-food,.order-item-name{
+    font-weight: 600;
+}
+
+.order-item-name{
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.order-item-address{
+    margin-bottom: 10px;
+}
+
+.order-item select{
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    width: max(10vw,120px);
+    padding: 10px 14px;
+    outline:none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.order-item select:hover {
+    background-color: rgba(255, 76, 36, 0.05);
+}
+
+.order-item select:focus {
+    box-shadow: 0 0 0 3px rgba(255, 76, 36, 0.1);
+}
+
+@media(max-width:1000px){
+    .order-item{
+        font-size: 12px;
+        grid-template-columns: 0.5fr 2fr 1fr;
+        padding: 15px 8px;
+    }
+    .order-item select{
+        padding: 5px;
+        font-size: 12px;
+    }
+    .order-item img{
+        width: 40px;
+    }
+}
+

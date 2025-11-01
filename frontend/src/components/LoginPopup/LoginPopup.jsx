@@ -36,8 +36,43 @@ const LoginPopup = ({ setShowLogin }) => {
         if (response.data.success) {
             setToken(response.data.token)
             localStorage.setItem("token", response.data.token)
+            
+            // Store role in localStorage - get from response or decode from token
+            let role = response.data.role;
+            
+            // If role not in response, decode from token
+            if (!role && response.data.token) {
+                try {
+                    const base64Url = response.data.token.split('.')[1];
+                    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                    const decoded = JSON.parse(jsonPayload);
+                    if (decoded.role) {
+                        role = decoded.role;
+                    }
+                } catch (e) {
+                    console.error("Error decoding token:", e);
+                }
+            }
+            
+            // Default to 'user' if no role found
+            role = role || 'user';
+            localStorage.setItem("role", role);
+            
+            // Store user name if available in response or from registration
+            if (data.name) {
+              localStorage.setItem("userName", data.name);
+            }
+            
             loadCartData({token:response.data.token})
             setShowLogin(false)
+            
+            // Redirect admin users to admin dashboard
+            if (role === 'admin') {
+                window.location.href = '/admin'
+            }
         }
         else {
             toast.error(response.data.message)

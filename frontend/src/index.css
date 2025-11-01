@@ -1,39 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #FF4C24;
+  --primary-gradient: linear-gradient(135deg, #FF4C24 0%, #FF6B4A 100%);
+  --secondary-color: #49557E;
+  --text-dark: #262626;
+  --text-light: #808080;
+  --text-muted: #676767;
+  --bg-light: #F8F9FA;
+  --bg-white: #FFFFFF;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.2);
+  --border-radius: 16px;
+  --border-radius-sm: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', 'Outfit', sans-serif;
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  transition: var(--transition);
 }
 
 .app {
   width: 80%;
   margin: auto;
+  background: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.admin-app {
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  min-height: 100vh;
+}
+
+.app-content {
+  display: flex;
+  width: 100%;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    transform: translateY(20px);
   }
 
   100% {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
 @media (max-width:1050px) {
   .app {
-    width: 90%;
+    width: 95%;
+    border-radius: var(--border-radius-sm);
   }
 }

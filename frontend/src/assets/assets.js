@@ -47,6 +47,11 @@ import food_32 from './food_32.png'
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
 import remove_icon_red from './remove_icon_red.png'
+// Admin assets - using existing or similar icons
+import add_icon from './add_icon_white.png' // Using add_icon_white for admin
+import order_icon from './bag_icon.png' // Using bag_icon for order_icon
+import profile_image from './profile_icon.png' // Using profile_icon for profile_image
+import upload_area from './cross_icon.png' // Placeholder - will need actual upload_area image
 import app_store from './app_store.png'
 import play_store from './play_store.png'
 import linkedin_icon from './linkedin_icon.png'
@@ -83,7 +88,12 @@ export const assets = {
     bag_icon,
     parcel_icon,
     checked,
-    un_checked
+    un_checked,
+    // Admin assets
+    add_icon,
+    order_icon,
+    profile_image,
+    upload_area
 }
 
 export const menu_list = [

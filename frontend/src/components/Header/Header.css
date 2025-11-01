@@ -2,9 +2,25 @@
     height: 34vw;
     margin: 30px auto;
     background: url('/header_img.png') no-repeat;
-    background-size:contain;
+    background-size:cover;
+    background-position: center;
     position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
 }
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 76, 36, 0.85) 0%, rgba(73, 85, 126, 0.75) 100%);
+    z-index: 1;
+}
+
 .header-contents{
     position: absolute;
     display: flex;
@@ -14,42 +30,74 @@
     max-width: 50%;
     bottom: 10%;
     left: 6vw;
-    animation: fadeIn 3s;
+    z-index: 2;
+    animation: fadeIn 1.2s ease-out;
 }
+
 .header-contents h2{
-    font-weight:500;
+    font-weight: 700;
     color: white;
-    font-size: max(4.5vw,22px);
+    font-size: max(4.5vw,28px);
+    line-height: 1.2;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
 }
+
 .header-contents p{
-    color: white;
-    font-size: 1vw;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: max(1.1vw,14px);
+    line-height: 1.6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
 .header-contents button{
     border: none;
-    color: #747474;
-    font-weight: 500;
-    padding: 1vw 2.3vw;
-    background: white;
-    font-size: max(1vw,13px);
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 1vw 2.5vw;
+    background: var(--bg-white);
+    font-size: max(1vw,14px);
     border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    letter-spacing: 0.5px;
+    margin-top: 0.5vw;
 }
+
+.header-contents button:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: var(--bg-white);
+}
+
+.header-contents button:active{
+    transform: translateY(0);
+}
+
 @media (max-width:1050px) {
     .header{
         height: 38vw;
+        border-radius: var(--border-radius-sm);
     }
     .header-contents{
         max-width: 45%;
     }
 }
+
 @media(max-width:750px){
     .header-contents{
-        max-width: 55%;
+        max-width: 65%;
+        left: 4vw;
+    }
+    .header-contents h2{
+        font-size: max(5vw,24px);
     }
     .header-contents p{
        display: none;
     }
     .header-contents button{
-        padding: 2vw 4vw;
+        padding: 2.5vw 5vw;
+        font-size: max(3.5vw,14px);
     }
 }

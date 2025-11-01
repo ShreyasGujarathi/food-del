@@ -24,12 +24,19 @@ const StoreContextProvider = (props) => {
         }
     }
 
-    const removeFromCart = async (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
-        if (token) {
-            await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
-        }
+    // Decrease quantity by 1
+const removeFromCart = (itemId) => {
+    if (cartItems[itemId] > 0) {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     }
+  };
+  
+  // Remove item completely
+  const removeItemCompletely = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: 0 }));
+  };
+  
+            
 
     const getTotalCartAmount = () => {
         let totalAmount = 0;
@@ -60,9 +67,28 @@ const StoreContextProvider = (props) => {
     useEffect(() => {
         async function loadData() {
             await fetchFoodList();
-            if (localStorage.getItem("token")) {
-                setToken(localStorage.getItem("token"))
-                await loadCartData({ token: localStorage.getItem("token") })
+            const storedToken = localStorage.getItem("token");
+            if (storedToken) {
+                setToken(storedToken);
+                
+                // If role is not in localStorage, decode it from token
+                if (!localStorage.getItem("role") && storedToken) {
+                    try {
+                        const base64Url = storedToken.split('.')[1];
+                        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                        }).join(''));
+                        const decoded = JSON.parse(jsonPayload);
+                        if (decoded.role) {
+                            localStorage.setItem("role", decoded.role);
+                        }
+                    } catch (e) {
+                        console.error("Error decoding token on load:", e);
+                    }
+                }
+                
+                await loadCartData({ token: storedToken });
             }
         }
         loadData()
@@ -75,6 +101,7 @@ const StoreContextProvider = (props) => {
         cartItems,
         addToCart,
         removeFromCart,
+        removeItemCompletely,
         getTotalCartAmount,
         token,
         setToken,
