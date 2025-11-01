@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
@@ -8,6 +9,7 @@ import { toast } from 'react-toastify'
 const LoginPopup = ({ setShowLogin }) => {
 
     const { setToken, url,loadCartData } = useContext(StoreContext)
+    const navigate = useNavigate()
     const [currState, setCurrState] = useState("Sign Up");
 
     const [data, setData] = useState({
@@ -60,6 +62,7 @@ const LoginPopup = ({ setShowLogin }) => {
             // Default to 'user' if no role found
             role = role || 'user';
             localStorage.setItem("role", role);
+            console.log('LoginPopup: Role saved to localStorage:', role);
             
             // Store user name if available in response or from registration
             if (data.name) {
@@ -69,9 +72,10 @@ const LoginPopup = ({ setShowLogin }) => {
             loadCartData({token:response.data.token})
             setShowLogin(false)
             
-            // Redirect admin users to admin dashboard
+            // Redirect admin users to admin dashboard using React Router
             if (role === 'admin') {
-                window.location.href = '/admin'
+                console.log('LoginPopup: Redirecting admin to /admin');
+                navigate('/admin', { replace: true });
             }
         }
         else {

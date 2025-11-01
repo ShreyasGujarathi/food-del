@@ -87,6 +87,15 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path="*"
+                element={
+                  <div style={{ padding: '20px', textAlign: 'center' }}>
+                    <h2>404 - Page Not Found</h2>
+                    <p>The requested admin page does not exist.</p>
+                  </div>
+                }
+              />
             </Routes>
           </div>
         </div>

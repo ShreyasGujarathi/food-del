@@ -25,6 +25,7 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
 
     // Check if user is authenticated
     if (!token) {
+      console.log('ProtectedRoute: No token found');
       setHasAccess(false);
       setIsChecking(false);
       return;
@@ -36,6 +37,9 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
       if (decoded && decoded.role) {
         role = decoded.role;
         localStorage.setItem('role', role);
+        console.log('ProtectedRoute: Role decoded from token:', role);
+      } else {
+        console.log('ProtectedRoute: Could not decode role from token');
       }
     }
 
@@ -45,13 +49,17 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
       const normalizedRole = role ? role.trim().toLowerCase() : null;
       const normalizedAllowedRoles = allowedRoles.map(r => r.trim().toLowerCase());
       
+      console.log('ProtectedRoute: Checking role', normalizedRole, 'against allowed roles', normalizedAllowedRoles);
+      
       if (!normalizedRole || !normalizedAllowedRoles.includes(normalizedRole)) {
+        console.log('ProtectedRoute: Access denied - role mismatch');
         setHasAccess(false);
         setIsChecking(false);
         return;
       }
     }
 
+    console.log('ProtectedRoute: Access granted');
     setHasAccess(true);
     setIsChecking(false);
   }, [allowedRoles]);
