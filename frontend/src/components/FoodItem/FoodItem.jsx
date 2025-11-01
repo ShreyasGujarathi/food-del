@@ -8,10 +8,21 @@ const FoodItem = ({ image, name, price, desc , id }) => {
     const [itemCount, setItemCount] = useState(0);
     const {cartItems,addToCart,removeFromCart,url,currency} = useContext(StoreContext);
 
+    // Handle image URL - if it's a full URL (GitHub raw), use it directly, otherwise prepend backend URL
+    const getImageUrl = () => {
+        if (!image) return '';
+        // Check if image is already a full URL (starts with http:// or https://)
+        if (image.startsWith('http://') || image.startsWith('https://')) {
+            return image;
+        }
+        // Otherwise, use the backend URL
+        return `${url}/images/${image}`;
+    };
+
     return (
         <div className='food-item'>
             <div className='food-item-img-container'>
-                <img className='food-item-image' src={url+"/images/"+image} alt="" />
+                <img className='food-item-image' src={getImageUrl()} alt={name} />
                 {!cartItems[id]
                 ?<img className='add' onClick={() => addToCart(id)} src={assets.add_icon_white} alt="" />
                 :<div className="food-item-counter">

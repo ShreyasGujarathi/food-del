@@ -18,9 +18,18 @@ const Cart = () => {
         <hr />
         {food_list.map((item, index) => {
           if (cartItems[item._id]>0) {
+            // Handle image URL - if it's a full URL (GitHub raw), use it directly, otherwise prepend backend URL
+            const getImageUrl = () => {
+              if (!item.image) return '';
+              if (item.image.startsWith('http://') || item.image.startsWith('https://')) {
+                return item.image;
+              }
+              return `${url}/images/${item.image}`;
+            };
+
             return (<div key={index}>
               <div className="cart-items-title cart-items-item">
-                <img src={url+"/images/"+item.image} alt="" />
+                <img src={getImageUrl()} alt="" />
                 <p>{item.name}</p>
                 <p>{currency}{item.price}</p>
                 <div className="cart-item-quantity-controls">

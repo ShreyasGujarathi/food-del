@@ -328,7 +328,11 @@ const Add = () => {
                                         }}>
                                             {/* Category image */}
                                             {cat.image ? (
-                                                <img src={`${url}/images/${cat.image}`} alt={cat.name} style={{
+                                                <img src={
+                                                    cat.image.startsWith('http://') || cat.image.startsWith('https://')
+                                                        ? cat.image
+                                                        : `${url}/images/${cat.image}`
+                                                } alt={cat.name} style={{
                                                     width: '50px',
                                                     height: '50px',
                                                     objectFit: 'cover',

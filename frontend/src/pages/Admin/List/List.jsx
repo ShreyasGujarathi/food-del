@@ -54,9 +54,18 @@ const List = () => {
           <b>Action</b>
         </div>
         {list.map((item, index) => {
+          // Handle image URL - if it's a full URL (GitHub raw), use it directly, otherwise prepend backend URL
+          const getImageUrl = () => {
+            if (!item.image) return '';
+            if (item.image.startsWith('http://') || item.image.startsWith('https://')) {
+              return item.image;
+            }
+            return `${url}/images/${item.image}`;
+          };
+
           return (
             <div key={index} className='list-table-format'>
-              <img src={`${url}/images/` + item.image} alt="" />
+              <img src={getImageUrl()} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
