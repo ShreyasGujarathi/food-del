@@ -1,11 +1,23 @@
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env file - try explicit path first, then default location
+const envPath = path.join(__dirname, '.env');
+dotenv.config({ path: envPath });
+
+// If MONGO_URL is not set, log warning (for Render/deployment, set it in environment)
+if (!process.env.MONGO_URL) {
+  console.warn('Warning: MONGO_URL is not set. Make sure it is configured in environment variables.');
+}
 import express  from "express"
 import cors from 'cors'
 import { connectDB } from "./config/db.js"
 import userRouter from "./routes/userRoute.js"
 import foodRouter from "./routes/foodRoute.js"
-import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
 
