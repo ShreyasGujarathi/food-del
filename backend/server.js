@@ -1,17 +1,32 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load .env file - try explicit path first, then default location
+// Load .env file only if it exists (for local development)
+// In production (Render), environment variables are set directly in the platform
 const envPath = path.join(__dirname, '.env');
-dotenv.config({ path: envPath });
+if (existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+  console.log('Loaded .env file for local development');
+} else {
+  // In production, rely on environment variables set by the platform
+  dotenv.config(); // This will use environment variables already set by Render
+}
 
-// If MONGO_URL is not set, log warning (for Render/deployment, set it in environment)
-if (!process.env.MONGO_URL) {
-  console.warn('Warning: MONGO_URL is not set. Make sure it is configured in environment variables.');
+// Validate required environment variables
+const requiredEnvVars = ['MONGO_URL', 'JWT_SECRET'];
+const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+
+if (missingVars.length > 0) {
+  console.error('❌ Missing required environment variables:', missingVars.join(', '));
+  console.error('💡 For local development: Create a .env file in the backend directory');
+  console.error('💡 For Render deployment: Set environment variables in Render dashboard');
+  console.error('   Go to: Your Service → Environment → Add Environment Variable');
+  process.exit(1);
 }
 import express  from "express"
 import cors from 'cors'
