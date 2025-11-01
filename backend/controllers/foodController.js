@@ -52,4 +52,16 @@ const removeFood = async (req, res) => {
 
 }
 
-export { listFood, addFood, removeFood }
+// get all categories
+const getCategories = async (req, res) => {
+    try {
+        const categories = await foodModel.distinct("category");
+        // Return empty array if no categories found, but still success
+        res.json({ success: true, data: categories || [] })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error", data: [] })
+    }
+}
+
+export { listFood, addFood, removeFood, getCategories }

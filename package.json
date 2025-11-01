@@ -1,0 +1,6 @@
+{
+  "name": "quick-bite",
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

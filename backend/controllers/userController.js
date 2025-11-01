@@ -4,8 +4,8 @@ import validator from "validator";
 import userModel from "../models/userModel.js";
 
 //create token
-const createToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET);
+const createToken = (id, role) => {
+    return jwt.sign({id, role}, process.env.JWT_SECRET);
 }
 
 //login user
@@ -24,8 +24,8 @@ const loginUser = async (req,res) => {
             return res.json({success:false,message: "Invalid credentials"})
         }
 
-        const token = createToken(user._id)
-        res.json({success:true,token})
+        const token = createToken(user._id, user.role)
+        res.json({success:true,token, role: user.role})
     } catch (error) {
         console.log(error);
         res.json({success:false,message:"Error"})
@@ -56,8 +56,8 @@ const registerUser = async (req,res) => {
 
         const newUser = new userModel({name, email, password: hashedPassword})
         const user = await newUser.save()
-        const token = createToken(user._id)
-        res.json({success:true,token})
+        const token = createToken(user._id, user.role)
+        res.json({success:true,token, role: user.role})
 
     } catch(error){
         console.log(error);
@@ -65,4 +65,18 @@ const registerUser = async (req,res) => {
     }
 }
 
-export {loginUser, registerUser}
+// get user details
+const getUser = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.body.userId).select('-password');
+        if (!user) {
+            return res.json({success:false, message: "User not found"})
+        }
+        res.json({success:true, data: user})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message:"Error"})
+    }
+}
+
+export {loginUser, registerUser, getUser}
