@@ -1,6 +1,6 @@
-# TOMATO - Food Ordering Website
+# Quick Bite - Food Ordering Website
 
-Welcome to TOMATO, a sophisticated and dynamic food ordering website crafted using the MERN stack. Designed with user experience in mind, TOMATO offers a seamless and intuitive online food ordering journey.
+Welcome to Quick Bite, a sophisticated and dynamic food ordering website crafted using the MERN stack. Designed with user experience in mind, Quick Bite offers a seamless and intuitive online food ordering journey.
 
 ## Demo
 
