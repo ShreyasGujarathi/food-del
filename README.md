@@ -26,7 +26,7 @@ Welcome to Quick Bite, a sophisticated and dynamic food ordering website crafted
 
 - Hero Section
   
-![Hero](https://ibb.co/5x6v6PWp)
+![Hero]([https://ibb.co/5x6v6PWp])
 
 - Products Section
   
