@@ -34,7 +34,7 @@ Welcome to Quick Bite, a sophisticated and dynamic food ordering website crafted
 
 - Cart Page
   
-![Cart](https://i.ibb.co/qFsRZrHx/Screenshot-2025-11-08-090717.png)
+![Cart](frontend/src/assets/Cart.png)
 
 - Login Popup
   
