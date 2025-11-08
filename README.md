@@ -26,19 +26,19 @@ Welcome to Quick Bite, a sophisticated and dynamic food ordering website crafted
 
 - Hero Section
   
-![Hero](./assets/hero_[age.png)
+![Hero](frontend/src/assets/hero_page.png)
 
 - Products Section
   
-![Products](https://i.ibb.co/gb0JvmLT/Screenshot-2025-11-08-085836.png)
+![Products](frontend/src/assets/Products.png)
 
 - Cart Page
   
 ![Cart](frontend/src/assets/Cart.png)
 
-- Login Popup
+- Signup Popup
   
-![Login](https://i.ibb.co/2YmsnVTF/Screenshot-2025-11-08-090019.png)
+![Signup](frontend/src/assets/Signup.png)
 
 
 ## Run Locally
