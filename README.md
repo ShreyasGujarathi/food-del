@@ -26,19 +26,19 @@ Welcome to Quick Bite, a sophisticated and dynamic food ordering website crafted
 
 - Hero Section
   
-![Hero](https://i.ibb.co/59cwY75/food-hero.png)
+![Hero](https://ibb.co/5x6v6PWp)
 
 - Products Section
   
-![Products](https://i.ibb.co/JnNQPyQ/food-products.png)
+![Products](https://ibb.co/TDQtKYx8)
 
 - Cart Page
   
-![Cart](https://i.ibb.co/t2LrQ8p/food-cart.png)
+![Cart](https://ibb.co/yBy83QzV)
 
 - Login Popup
   
-![Login](https://i.ibb.co/s6PgwkZ/food-login.png)
+![Login](https://ibb.co/G3BtxYqd)
 
 
 ## Run Locally
